@@ -11,18 +11,22 @@ Config = {}
 -- 'en' | 'ka' — the wheel's chrome (Back / Close) and the slot labels (shared/labels.lua)
 Config.Locale = 'en'
 
--- The key that shows the wheel while held. A-Z, 0-9, F1-F12, TAB, SPACE, LSHIFT, LCTRL...
--- (lxr-radial holds F1; keep them apart)
-Config.OpenKey = 'J'
+-- true: this is the whole action wheel (F1: clothing, horse, satchel, duty, papers, HUD — the entries lxr-radial
+-- carries) and lxr-radial can stay off. false: the clothing ring only (J) and lxr-radial is the action wheel.
+Config.FullWheel = true
 
--- Keys that open a specific wheel directly. Only `clothing` exists here.
-Config.DirectMenuKeys = {}
+-- The key that shows the context wheel while held. A-Z, 0-9, F1-F12, TAB, SPACE, LSHIFT, LCTRL...
+Config.OpenKey = 'F1'
+
+-- Keys that open a specific wheel directly: the clothing ring on J
+Config.DirectMenuKeys = { clothing = 'J' }
 
 Config.Integrations = {
     lxr_clothing = true,     -- the clothing wheel from lxr-clothing's Wearing() / ToggleCategory / CycleState
 }
 
--- Every context resolves to the clothing wheel — on foot, in the saddle, on a wagon
+-- Contexts: with Config.FullWheel integrations/lxr_actions.lua sets player / horse / vehicle;
+-- without it every context is the clothing wheel
 Config.Contexts = {
     { menuId = 'clothing', when = function(_) return true end },
 }

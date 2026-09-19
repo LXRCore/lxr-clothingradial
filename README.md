@@ -11,7 +11,7 @@
 ![Core](https://img.shields.io/badge/requires-lxr--core_v3-1a1512)
 ![License](https://img.shields.io/badge/license-GPL--3.0-1a1512)
 
-Hold **J** (or `/clothes`, or *Clothing* on lxr-radial's wheel) and the wheel
+Hold **J** (or `/clothes`, or *Clothing* on the F1 wheel) and the wheel
 shows what your character is wearing: one slot per worn piece to take off or put
 back on; the shirt, vest, neckwear, boots, gunbelt and hair open a small
 sub-wheel with their wearable state — sleeves and collar, tucked in or out,
@@ -19,8 +19,11 @@ raised or lowered, over or under the pants, holster side, pomade. *Undress*
 and *Dress* do the whole outfit at once. Everything is built from lxr-clothing
 when the wheel opens, so it is always what is on the ped.
 
-The regular action wheel (horse, satchel, duty, papers, HUD) is **lxr-radial**
-on F1. This resource is the clothing ring only.
+With `Config.FullWheel` (the default) this is the whole action wheel: **F1**
+opens the context wheel — clothing as a sub-wheel, horse call / stable, satchel,
+duty, papers, HUD; in the saddle and on a wagon the wheel changes. Then
+**lxr-radial stays off** (both hold F1). Set it `false` for the clothing ring
+only and run lxr-radial (our own wheel) for the rest.
 
 ## Where it comes from
 

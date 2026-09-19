@@ -12,8 +12,8 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 
 name 'lxr-clothingradial'
 author 'Murphy Workshop · LXRCore fork'
-description 'The clothing wheel: take off / put on, sleeves, collar, tuck, raise, over / under, undress, dress — built from what you wear (lxr-clothing).'
-version '1.0.0'
+description 'The action wheel (F1) and the clothing wheel (J): clothing on / off and wearable states from lxr-clothing, horse, satchel, duty, papers, HUD.'
+version '1.1.0'
 lxr_core_api '3'
 
 lua54 'yes'
@@ -27,6 +27,7 @@ client_scripts {
     -- integrations append their menus to Config.Menus, so they load BEFORE client/client.lua (which clones the catalogue at boot)
     'integrations/_shared.lua',
     'integrations/lxr_clothing.lua',
+    'integrations/lxr_actions.lua',
     'client/client.lua',
 }
 
