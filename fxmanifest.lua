@@ -6,7 +6,7 @@
      © 2026 Murphy Workshop (original) · LXRCore fork — GPL-3.0
      ═══════════════════════════════════════════════════════════════════════════ ]]
 
-fx_version 'cerulean'
+fx_version '3.0.0'
 game 'rdr3'
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
 

@@ -7,7 +7,7 @@
 
 # lxr-clothingradial — The clothing wheel
 
-![Version](https://img.shields.io/badge/version-1.0.0-c21c37)
+![Version](https://img.shields.io/badge/version-3.0.0-c21c37)
 ![Core](https://img.shields.io/badge/requires-lxr--core_v3-1a1512)
 ![License](https://img.shields.io/badge/license-GPL--3.0-1a1512)
 

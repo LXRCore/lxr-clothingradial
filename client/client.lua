@@ -320,70 +320,18 @@ end)
 
 -- ============================================================================
 -- KEYBIND
--- ----------------------------------------------------------------------------
--- Config.OpenControl (control hash) is a toggle: hold-to-show can't work on
--- mouse binds because once the NUI takes focus the game side never sees the
--- release. The opening press is detected here; the closing press / Esc /
--- backdrop click are detected by the NUI page (App.jsx), the only layer that
--- still sees input while focused. The control stays disabled so its native
--- effect (e.g. INPUT_ATTACK2 = secondary attack) never leaks through.
--- Config.OpenKey (keyboard) polls IsRawKey*, which survives NUI focus:
--- hold-to-show works.
 -- ============================================================================
-
-local KEY_CODES = {
-  A = 0x41, B = 0x42, C = 0x43, D = 0x44, E = 0x45, F = 0x46, G = 0x47,
-  H = 0x48, I = 0x49, J = 0x4A, K = 0x4B, L = 0x4C, M = 0x4D, N = 0x4E,
-  O = 0x4F, P = 0x50, Q = 0x51, R = 0x52, S = 0x53, T = 0x54, U = 0x55,
-  V = 0x56, W = 0x57, X = 0x58, Y = 0x59, Z = 0x5A,
-  ['0'] = 0x30, ['1'] = 0x31, ['2'] = 0x32, ['3'] = 0x33, ['4'] = 0x34,
-  ['5'] = 0x35, ['6'] = 0x36, ['7'] = 0x37, ['8'] = 0x38, ['9'] = 0x39,
-  TAB = 0x09, SPACE = 0x20, ESCAPE = 0x1B, ENTER = 0x0D, BACKSPACE = 0x08,
-  F1 = 0x70, F2  = 0x71, F3  = 0x72, F4  = 0x73, F5  = 0x74, F6  = 0x75,
-  F7 = 0x76, F8  = 0x77, F9  = 0x78, F10 = 0x79, F11 = 0x7A, F12 = 0x7B,
-  LSHIFT = 0xA0, RSHIFT = 0xA1, LCTRL = 0xA2, RCTRL = 0xA3,
-  LALT = 0xA4, RALT = 0xA5,
-}
-
-local function resolveKeyCode(name)
-  if type(name) == 'number' then return name end
-  if type(name) ~= 'string' then return nil end
-  return KEY_CODES[name:upper()]
+-- The keys, through RegisterKeyMapping: nothing polls per frame and players rebind them in the game's
+-- settings. Hold-to-show: `+` opens, `-` closes (the release reaches us because NUI focus keeps input).
+local function keyName(k) return tostring(k or 'F1') end
+RegisterCommand('+lxr_wheel', function() if not currentMenuId and not IsPauseMenuActive() then open(nil) end end, false)
+RegisterCommand('-lxr_wheel', function() if currentMenuId then close() end end, false)
+RegisterKeyMapping('+lxr_wheel', 'Action wheel', 'keyboard', keyName(Config.OpenKey))
+for menuId, key in pairs(Config.DirectMenuKeys or {}) do
+  RegisterCommand('+lxr_wheel_' .. menuId, function() if not currentMenuId and not IsPauseMenuActive() then open(menuId) end end, false)
+  RegisterCommand('-lxr_wheel_' .. menuId, function() if currentMenuId == menuId then close() end end, false)
+  RegisterKeyMapping('+lxr_wheel_' .. menuId, 'Wheel: ' .. menuId, 'keyboard', keyName(key))
 end
-
-CreateThread(function()
-  if type(Config.OpenControl) == 'number' then
-    local control = Config.OpenControl
-    local wasPressed = false
-    while true do
-      Wait(0)
-      if not IsPauseMenuActive() then
-        DisableControlAction(0, control, true)
-        local pressed = IsDisabledControlPressed(0, control)
-        if pressed and not wasPressed and not currentMenuId then
-          open(nil)
-        end
-        wasPressed = pressed
-      end
-    end
-  else
-    local vk = resolveKeyCode(Config.OpenKey or 'B')
-    if not vk then
-      logError('unknown Config.OpenKey %q, no keybind installed', tostring(Config.OpenKey))
-      return
-    end
-    while true do
-      Wait(0)
-      if not IsPauseMenuActive() then
-        if IsRawKeyPressed(vk) and not currentMenuId then
-          open(nil)
-        elseif IsRawKeyReleased(vk) and currentMenuId then
-          close()
-        end
-      end
-    end
-  end
-end)
 
 --   /clothes -> the clothing wheel (press again, or Esc, to close)
 RegisterCommand('clothes', function()
@@ -391,33 +339,6 @@ RegisterCommand('clothes', function()
   open('clothing')
 end, false)
 
--- Direct-open keybinds: Config.DirectMenuKeys maps a menu id to a key that
--- opens that wheel straight away, skipping the context wheel. Same
--- hold-to-show model as Config.OpenKey.
-CreateThread(function()
-  local binds = {}
-  for menuId, keyName in pairs(Config.DirectMenuKeys or {}) do
-    local vk = resolveKeyCode(keyName)
-    if vk then
-      binds[#binds + 1] = { vk = vk, menuId = menuId }
-    else
-      logError('unknown key %q in Config.DirectMenuKeys.%s, bind skipped', tostring(keyName), tostring(menuId))
-    end
-  end
-  if #binds == 0 then return end
-  while true do
-    Wait(0)
-    if not IsPauseMenuActive() then
-      for _, b in ipairs(binds) do
-        if IsRawKeyPressed(b.vk) and not currentMenuId then
-          open(b.menuId)
-        elseif IsRawKeyReleased(b.vk) and currentMenuId == b.menuId then
-          close()
-        end
-      end
-    end
-  end
-end)
 
 -- ============================================================================
 -- EXPORTS

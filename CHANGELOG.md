@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.0 — 2026-09-19
+* LXRCore v3 release line: every resource ships as 3.0.0 from here (the entries below are the road to it).
+* The wheel keys go through RegisterKeyMapping (the three raw-key polls per frame are gone; F1 / J rebindable in the game settings).
+
 ## 1.1.0 — 2026-09-19
 * `Config.FullWheel` (default true): the fork is the whole action wheel — F1 opens the context wheel (player / horse / wagon) with clothing as a sub-wheel, horse call / stable, satchel, duty, papers, HUD; J still opens clothing directly. With it lxr-radial stays off (both hold F1). `false` = the clothing ring only, lxr-radial the action wheel.
 

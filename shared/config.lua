@@ -15,7 +15,7 @@ Config.Locale = 'en'
 -- carries) and lxr-radial can stay off. false: the clothing ring only (J) and lxr-radial is the action wheel.
 Config.FullWheel = true
 
--- The key that shows the context wheel while held. A-Z, 0-9, F1-F12, TAB, SPACE, LSHIFT, LCTRL...
+-- The key that shows the context wheel while held (RegisterKeyMapping default; players rebind it in the game's settings)
 Config.OpenKey = 'F1'
 
 -- Keys that open a specific wheel directly: the clothing ring on J
