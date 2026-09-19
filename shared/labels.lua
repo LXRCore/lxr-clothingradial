@@ -14,7 +14,7 @@ Labels = {
         raise = 'Raise / lower', over_under = 'Over / under the pants', gunbelt_side = 'Gunbelt side', pomade = 'Pomade',
         undress = 'Undress', dress = 'Dress', hair = 'Hair', title = 'Clothing',
         player = 'Player', horse = 'Horse', wagon = 'Wagon', horse_call = 'Call the horse', horse_store = 'Stable the horse',
-        satchel = 'Satchel', trade = 'Trade', duty = 'Duty', papers = 'Papers', hud = 'HUD',
+        satchel = 'Satchel', trade = 'Trade', emotes = 'Emotes', duty = 'Duty', papers = 'Papers', hud = 'HUD',
     },
     ka = {
         hats = 'ქუდი', headwear = 'თავსაბურავი', hat_accessories = 'ქუდის აქსესუარი', masks = 'ნიღაბი', eyewear = 'სათვალე',
@@ -27,7 +27,7 @@ Labels = {
         raise = 'აწევა / დაშვება', over_under = 'შარვალზე / შარვალქვეშ', gunbelt_side = 'ქამრის მხარე', pomade = 'პომადა',
         undress = 'გახდა სრულად', dress = 'ჩაცმა სრულად', hair = 'თმა', title = 'ტანსაცმელი',
         player = 'მოთამაშე', horse = 'ცხენი', wagon = 'ეტლი', horse_call = 'ცხენის გამოძახება', horse_store = 'ცხენის საჯინიბოში',
-        satchel = 'ჩანთა', trade = 'გაცვლა', duty = 'მორიგეობა', papers = 'საბუთები', hud = 'HUD',
+        satchel = 'ჩანთა', trade = 'გაცვლა', emotes = 'ემოციები', duty = 'მორიგეობა', papers = 'საბუთები', hud = 'HUD',
     },
 }
 
