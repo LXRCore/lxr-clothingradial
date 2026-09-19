@@ -6,14 +6,14 @@
      © 2026 Murphy Workshop (original) · LXRCore fork — GPL-3.0
      ═══════════════════════════════════════════════════════════════════════════ ]]
 
-fx_version '3.0.0'
+fx_version 'cerulean'
 game 'rdr3'
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
 
 name 'lxr-clothingradial'
 author 'Murphy Workshop · LXRCore fork'
 description 'The action wheel (F1) and the clothing wheel (J): clothing on / off and wearable states from lxr-clothing, horse, satchel, duty, papers, HUD.'
-version '1.1.0'
+version '3.0.0'
 lxr_core_api '3'
 
 lua54 'yes'
