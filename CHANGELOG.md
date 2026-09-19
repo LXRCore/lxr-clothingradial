@@ -1,6 +1,7 @@
 # Changelog
 
 ## 3.0.0 — 2026-09-19
+* The player wheel carries Trade (lxr-inventory's face-to-face trade).
 * LXRCore v3 release line: every resource ships as 3.0.0 from here (the entries below are the road to it).
 * The wheel keys go through RegisterKeyMapping (the three raw-key polls per frame are gone; F1 / J rebindable in the game settings).
 
