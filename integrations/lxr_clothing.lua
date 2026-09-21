@@ -70,6 +70,15 @@ local function build()
     local hasState = function(cat) local ok, v = pcall(function() return exports[TARGET]:HasState(cat) end) return ok and v == true end
     if hasState('loadouts') then out[#out + 1] = stateSlot('loadouts') end
     if hasState('hair') then local s = stateSlot('hair') s.label = L('hair') .. ' · ' .. L('pomade') out[#out + 1] = s end
+    -- saved outfits: one wheel, one slot each (lxr-clothing Outfits / WearOutfit; Config.Outfits.quickWear there)
+    local okO, saved = pcall(function() return exports[TARGET]:Outfits() end)
+    if okO and type(saved) == 'table' and #saved > 0 then
+        local kids = {}
+        for _, o in ipairs(saved) do
+            kids[#kids + 1] = { id = 'outfit:' .. o.id, icon = 'kit_wardrobe', label = o.name, action = { type = 'export', value = { TARGET, 'WearOutfit' }, args = { o.id } } }
+        end
+        out[#out + 1] = { id = 'outfits', icon = 'kit_wardrobe', label = L('outfits'), children = kids }
+    end
     -- everything off / on
     local anyOn, anyOff = false, false
     for _, cat in ipairs(Config.AllCategories) do local e = w[cat] if e and e.worn then if e.hidden then anyOff = true else anyOn = true end end end
