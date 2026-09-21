@@ -13,7 +13,7 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 name 'lxr-clothingradial'
 author 'Murphy Workshop · LXRCore fork'
 description 'The action wheel (F1) and the clothing wheel (J): clothing on / off and wearable states from lxr-clothing, horse, satchel, duty, papers, HUD.'
-version '3.0.0'
+version '3.0.1'
 lxr_core_api '3'
 
 lua54 'yes'
@@ -44,4 +44,6 @@ files {
     'ui/build/locales/**/*',
 }
 
-dependency 'lxr-clothing'
+-- No hard dependency and no framework: the wheel runs on any core or none. Its clothing ring reads lxr-clothing
+-- (ToggleCategory / CycleState / Wearing) when that resource is present; the other entries show only when their
+-- resource runs (lxr-horses, lxr-inventory, lxr-emotes, lxr-hud) or their core does (duty, papers on LXRCore).

@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1 — 2026-09-20
+
+* Standalone: no `dependency 'lxr-clothing'` and nothing from a core. The clothing ring reads lxr-clothing when it runs; duty and papers (LXRCore events) show only on LXRCore; horse / satchel / emotes / HUD only when their resource runs. Boots on VORP, RSG, LXRCore or bare.
+
 ## 3.0.0 — 2026-09-19
 * The player wheel carries Trade (lxr-inventory's face-to-face trade).
 * LXRCore v3 release line: every resource ships as 3.0.0 from here (the entries below are the road to it).

@@ -29,8 +29,8 @@ local horse = {
 local satchel = { id = 'satchel', icon = 'kit_pouch_kit',         label = L('satchel'), visibleWhen = started('lxr-inventory'), action = { type = 'command', value = 'inventory' } }
 local trade   = { id = 'trade',   icon = 'kit_pouch_valuables',       label = L('trade'),   visibleWhen = started('lxr-inventory'), action = { type = 'command', value = 'trade' } }
 local emotes  = { id = 'emotes',  icon = 'emote_dance_formal_a',  label = L('emotes'),  visibleWhen = started('lxr-emotes'), action = { type = 'command', value = 'emotes' } }
-local duty    = { id = 'duty',    icon = 'provision_deputy_star', label = L('duty'),    action = { type = 'serverEvent', value = 'lxr:player:duty' } }
-local papers  = { id = 'papers',  icon = 'document_player_journal', label = L('papers'), action = { type = 'serverEvent', value = 'lxr:item:use', args = { 'id_card' } } }
+local duty    = { id = 'duty',    icon = 'provision_deputy_star', label = L('duty'),    visibleWhen = started('lxr-core'), action = { type = 'serverEvent', value = 'lxr:player:duty' } }
+local papers  = { id = 'papers',  icon = 'document_player_journal', label = L('papers'), visibleWhen = started('lxr-core'), action = { type = 'serverEvent', value = 'lxr:item:use', args = { 'id_card' } } }
 local hud     = { id = 'hud',     icon = 'settings',              label = L('hud'),     visibleWhen = started('lxr-hud'), action = { type = 'command', value = 'hud' } }
 
 Config.Menus.player  = { title = L('player'), slots = { clothing, horse, satchel, trade, emotes, duty, papers, hud } }
